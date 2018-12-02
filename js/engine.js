@@ -103,6 +103,8 @@ var Engine = (function(global) {
      * they are just drawing the entire screen over and over.
      */
     function render() {
+        
+        
         /* This array holds the relative URL to the image used
          * for that particular row of the game level.
          */
@@ -112,7 +114,7 @@ var Engine = (function(global) {
                 'images/stone-block.png',   // Row 2 of 3 of stone
                 'images/stone-block.png',   // Row 3 of 3 of stone
                 'images/grass-block.png',   // Row 1 of 2 of grass
-                'images/grass-block.png'    // Row 2 of 2 of grass
+                'images/grass-block.png' ,    // Row 2 of 2 of grass
             ],
             numRows = 6,
             numCols = 5,
@@ -135,6 +137,10 @@ var Engine = (function(global) {
                  * we're using them over and over.
                  */
                 ctx.drawImage(Resources.get(rowImages[row]), col * 101, row * 83);
+                // ctx.drawImage(Resources.get('images/Heart.png'), 50, 360);
+                ctx.fillText(`Score: ${player.score}`, 10, 30);
+                ctx.fillText(`Health: ${player.health}`, 380, 30);
+                ctx.font = "30px serif";
             }
         }
 
@@ -154,7 +160,9 @@ var Engine = (function(global) {
         });
 
         player.render();
+
     }
+    
 
     /* This function does nothing but it could have been a good place to
      * handle game reset states - maybe a new game menu or a game over screen
@@ -173,7 +181,8 @@ var Engine = (function(global) {
         'images/water-block.png',
         'images/grass-block.png',
         'images/enemy-bug.png',
-        'images/char-boy.png'
+        'images/char-boy.png',
+        'images/Heart.png'
     ]);
     Resources.onReady(init);
 
